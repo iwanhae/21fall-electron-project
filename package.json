@@ -46,6 +46,8 @@
     "react-dom": "^17.0.2"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "npm run lint"
+    "*.{ts,tsx,js,jsx}": [
+      "npm run lint"
+    ]
   }
 }
