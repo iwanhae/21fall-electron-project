@@ -1,24 +1,9 @@
+import React, { useEffect } from 'react';
 
+const App = (): JSX.Element => {
+  useEffect(() => {}, []);
 
-import React, {useEffect} from 'react';
-
-const     App =     (): JSX.Element => {
-
-
-    useEffect(() => {
-
-
-
-    }, [])
-
-
-
-
-    return          <>Hello World</>;
-
-
-
-
+  return <>Hello World</>;
 };
 
 export default App;
