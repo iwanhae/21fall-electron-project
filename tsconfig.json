@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2019",
     "lib": [
-      "dom"
+      "dom",
+      "esnext"
     ],
     "module": "esnext",
-    "rootDir": "./",
     "baseUrl": "./",
     "allowJs": true,
     "noEmit": true,
@@ -20,14 +20,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@src/*": ["src/*"],
-      "@containers/*": ["src/containers/*"]
+      "@containers/*": ["src/containers/*"],
+      "@components/*": ["src/components/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
   "exclude": [
     "node_modules"
   ]

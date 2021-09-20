@@ -23,5 +23,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'react/jsx-filename-extension': 'off',
     'no-console': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
   },
 };

@@ -2,11 +2,15 @@
   "name": "21fall-electron-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "./dist/main.js",
   "scripts": {
-    "test": "echo \"hello husky!\" && exit 1",
-    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
-    "clear": "rimraf ./node_modules",
+    "test": "echo \"hello world!\"",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx,html}\" --fix",
+    "clear": "rimraf ./dist",
+    "dev": "run-p dev:*",
+    "dev:electron": "wait-on ./dist/main.js && cross-env NODE_ENV=\"development\" electron .",
+    "dev:tsc": "tsc -w -p tsconfig.electron.json",
+    "dev:build": "webpack --config webpack.config.js --watch",
     "prepare": "husky install"
   },
   "repository": {
@@ -21,12 +25,21 @@
   },
   "homepage": "https://github.com/syd03098/21fall-electron-project#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/mini-css-extract-plugin": "^2.3.0",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.13.2",
     "cross-env": "^7.0.3",
-    "electron": "^14.0.1",
+    "css-loader": "^6.3.0",
+    "electron-builder": "^22.11.7",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -35,15 +48,28 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.3.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.4.3"
+    "sass": "^1.41.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "typescript": "^4.4.3",
+    "wait-on": "^6.0.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "electron": "^14.0.1",
+    "electron-reload": "^1.5.0",
+    "electron-store": "^8.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
