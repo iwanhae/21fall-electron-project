@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -16,14 +17,19 @@ module.exports = {
     alias: {
       '@containers': path.resolve(__dirname, './src/containers'),
       '@components': path.resolve(__dirname, './src/components'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      'react-dom': '@hot-loader/react-dom',
     },
   },
-  entry: {
-    app: './src/containers/index.tsx',
-  },
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './src/containers/index.tsx',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
+    publicPath: '/',
     filename: '[name].js',
   },
   optimization: {
@@ -43,7 +49,7 @@ module.exports = {
       {
         test: /\.module\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -57,19 +63,19 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
       },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        include: path.resolve(__dirname, 'src'),
-        exclude: /\.module\.scss$/,
-      },
     ],
   },
+  devServer: {
+    port: 3000,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './src/containers/index.html',
-      scriptLoading: 'blocking',
       minify: false,
     }),
   ],

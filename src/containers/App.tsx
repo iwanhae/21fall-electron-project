@@ -1,22 +1,15 @@
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import GlobalStyle from '@components/GlobalStyle';
 import Typography from '@components/typography';
-import './index.scss';
-import styled from 'styled-components';
 
 const App = (): JSX.Element => {
   return (
     <>
-      <Typography />
-      <StyledButton>Hello World</StyledButton>
+      <GlobalStyle />
+      <Typography>Hello World</Typography>
     </>
   );
 };
 
-const StyledButton = styled.button`
-  display: inline-flex;
-  padding: 12px;
-  border: 1px solid;
-  cursor: pointer;
-`;
-
-export default App;
+export default hot(App);

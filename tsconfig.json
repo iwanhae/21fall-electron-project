@@ -21,7 +21,8 @@
     "isolatedModules": true,
     "paths": {
       "@containers/*": ["src/containers/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "exclude": [

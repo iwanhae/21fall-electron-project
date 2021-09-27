@@ -1,20 +1,10 @@
 import { app, BrowserWindow } from 'electron';
-import path from 'path';
 
 // avoid garbage collection;
 let window: BrowserWindow | null = null;
 
+// single instance lock;
 const gotTheLock = app.requestSingleInstanceLock();
-
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line global-require
-  require('electron-reload')(__dirname, {
-    electron: path.resolve(__dirname, '../node_modules/.bin/electron'),
-    // window path?
-    forceHardReset: true,
-    hardResetMethod: 'exit',
-  });
-}
 
 const createWindow = () => {
   window = new BrowserWindow({
@@ -22,10 +12,11 @@ const createWindow = () => {
     height: 600,
   });
 
-  window.loadFile('./dist/index.html').finally();
-
   if (process.env.NODE_ENV === 'development') {
     window.webContents.openDevTools({ mode: 'right' });
+    window.loadURL('http://localhost:3000/').finally();
+  } else {
+    window.loadFile('./dist/index.html').finally();
   }
 
   window.on('closed', () => {
@@ -33,7 +24,6 @@ const createWindow = () => {
   });
 };
 
-// 한개 앱만을 실행하기 위한 flag
 if (!gotTheLock) {
   app.exit();
 } else {
