@@ -8,6 +8,7 @@ interface Props {
 
 const Typography = ({ children }: Props): JSX.Element => {
   return <h1 className={sty.header}>{children}</h1>;
+  // return <StyledTypography>{children}</StyledTypography>
 };
 
 const StyledTypography = styled.h1`
