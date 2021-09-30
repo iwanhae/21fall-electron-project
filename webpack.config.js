@@ -1,7 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -68,13 +66,10 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    hot: true,
     compress: true,
     historyApiFallback: true,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './src/containers/index.html',
       minify: false,
