@@ -13,7 +13,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     symlinks: false,
     alias: {
-      '@containers': path.resolve(__dirname, './src/containers'),
+      '@routes': path.resolve(__dirname, './src/routes'),
       '@components': path.resolve(__dirname, './src/components'),
       '@library': path.resolve(__dirname, './src/library'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
@@ -24,7 +24,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/containers/index.tsx',
+    './src/routes/index.tsx',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -71,7 +71,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/containers/index.html',
+      template: './src/routes/index.html',
       minify: false,
     }),
   ],

@@ -20,7 +20,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@containers/*": ["src/containers/*"],
+      "@routes/*": ["src/routes/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@library/*": ["src/library/*"]
