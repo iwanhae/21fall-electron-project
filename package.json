@@ -14,6 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/syd03098/21fall-electron-project.git"
   },
+  "engines": {
+    "npm": ">= 7.24.1",
+    "yarn": "dont-use-yarn"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,7 +31,6 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
     "@hot-loader/react-dom": "^17.0.1",
-    "@types/mini-css-extract-plugin": "^1.4.3",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "@types/styled-components": "^5.1.14",
@@ -49,7 +52,6 @@
     "html-webpack-plugin": "^4.5.2",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
-    "mini-css-extract-plugin": "^1.6.2",
     "prettier": "^2.4.0",
     "rimraf": "^3.0.2",
     "sass": "^1.41.1",
@@ -58,9 +60,9 @@
     "ts-loader": "^8.3.0",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.4.3",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
   },
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1632432234",
