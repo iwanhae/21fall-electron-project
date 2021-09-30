@@ -3,6 +3,9 @@ const path = require('path');
 const { execFile } = require('child_process');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
+const isWindows = process.platform === 'win32';
+const fileName = isWindows ? 'electron.cmd' : 'electron';
+
 const compiler = webpack({
   entry: './src/main/index.ts',
   mode: 'development',
@@ -33,7 +36,7 @@ const compiler = webpack({
   stats: 'minimal',
 });
 
-let process = null;
+let childProcess = null;
 
 compiler.watch({}, (err, stats) => {
   if (err != null) {
@@ -43,11 +46,11 @@ compiler.watch({}, (err, stats) => {
     console.log(stats.toString({ colors: true }));
   }
 
-  if (process !== null) {
-    process.kill('SIGINT');
+  if (childProcess !== null) {
+    childProcess.kill('SIGINT');
   }
 
-  process = execFile(path.resolve(__dirname, '../../node_modules/.bin/electron'), [
+  childProcess = execFile(path.resolve(__dirname, `../../node_modules/.bin/${fileName}`), [
     path.resolve(__dirname, '../../dist/index.js'),
   ]);
 });
