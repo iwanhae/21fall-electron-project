@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
+import Camera from '@library/camera';
+import Pose from '@library/pose';
 
 interface Props {
   /** size of canvas width in pixel value */
@@ -14,16 +16,45 @@ interface Props {
  * @returns JSX
  */
 const PrimaryCanvas = ({ width, height }: Props): JSX.Element => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  let video: HTMLVideoElement;
+  let canvas: HTMLCanvasElement;
 
-  const video = videoRef.current as HTMLVideoElement;
-  const canvas = canvasRef.current as HTMLCanvasElement;
+  const refHook = useCallback((e) => {
+    if (e instanceof HTMLVideoElement) {
+      video = e;
+    } else if (e instanceof HTMLCanvasElement) {
+      canvas = e;
+    }
+    if (canvas != null && video != null) {
+      // init
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+      ctx.font = '15px Arial';
+      const cam = new Camera.CameraFeed(video);
+      const pose = new Pose.PosePipe();
+
+      // cam -> pose
+      cam.addHook(async (img) => {
+        await pose.catchImage(img);
+      });
+
+      // pose -> draw canvas
+      pose.addHook(async (p) => {
+        ctx.drawImage(p.image, 0, 0);
+        ctx.drawImage(p.segmentationMask, 0, 0);
+        p.poseLandmarks.forEach((ptr, i) => {
+          ctx.fillText(`${i}`, ptr.x * 640, ptr.y * 480);
+        });
+      });
+
+      // receiving cam
+      cam.start();
+    }
+  }, []);
 
   return (
     <div style={{ width: `${width}px`, height: `${height}px` }}>
-      <video ref={videoRef} style={{ display: 'none' }} />
-      <canvas ref={canvasRef} width={width} height={height} />
+      <video ref={refHook} style={{ display: 'none' }} />
+      <canvas ref={refHook} width={width} height={height} />
     </div>
   );
 };

@@ -12,11 +12,12 @@ module.exports = {
     __filename: false,
   },
   resolve: {
-    extensions: ['.tsx', 'ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js'],
     symlinks: false,
     alias: {
       '@containers': path.resolve(__dirname, './src/containers'),
       '@components': path.resolve(__dirname, './src/components'),
+      '@library': path.resolve(__dirname, './src/library'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
       'react-dom': '@hot-loader/react-dom',
     },

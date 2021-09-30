@@ -63,6 +63,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@mediapipe/camera_utils": "^0.3.1632432234",
+    "@mediapipe/pose": "^0.4.1630009814",
     "electron": "^14.0.1",
     "electron-store": "^8.0.1",
     "react": "^17.0.1",
