@@ -35,6 +35,7 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.3.0",
     "@types/styled-components": "^5.1.14",
+    "@types/three": "^0.132.2",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "babel-loader": "^8.2.2",
@@ -68,13 +69,16 @@
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1632432234",
     "@mediapipe/pose": "^0.4.1630009814",
+    "@react-three/drei": "^7.12.6",
+    "@react-three/fiber": "^7.0.9",
     "electron": "^14.0.1",
     "electron-store": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.3.0",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "three": "^0.133.0"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
