@@ -1,6 +1,6 @@
 import Theme from '@components/theme/type';
 
-export const theme: Theme = {
+const theme: Theme = {
   background: {
     main: 'white',
   },
@@ -13,3 +13,5 @@ export const theme: Theme = {
   },
   boxShadow: '',
 };
+
+export default theme;
