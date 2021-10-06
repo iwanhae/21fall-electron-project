@@ -149,9 +149,7 @@ const normalize = css`
   }
 `;
 
-const GlobalStyle = createGlobalStyle`
-  ${normalize};
-  
+const globalStyle = css`
   * {
     box-sizing: border-box;
     &:focus {
@@ -159,13 +157,35 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  a,
+  button {
+    outline: none;
+    background-color: transparent;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
+      'Segoe UI Emoji', 'Segoe UI Symbol';
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    color: ${({ theme }) => theme.text.plain};
+    background-color: ${({ theme }) => theme.color.background};
   }
+`;
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize};
+  ${globalStyle};
 `;
 
 export default GlobalStyle;

@@ -1,5 +1,5 @@
-import React, { ReactNode, ButtonHTMLAttributes, forwardRef } from 'react';
-import styled, { StyledComponent } from 'styled-components';
+import React, { ReactNode, forwardRef } from 'react';
+import styled from 'styled-components';
 
 interface ButtonProps {
   children: ReactNode;
@@ -22,12 +22,11 @@ const StyledButton = styled.button`
   color: black;
 
   border: none;
-  border-radius: ${({ theme }) => theme.border.radius};
+  border-radius: ${({ theme }) => theme.properties.border.radius};
 
   background-color: ${({ theme }) => theme.color.primary};
 
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px,
-    rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px, rgba(17, 17, 26, 0.1) 0 24px 80px;
 `;
 
 export default Button;

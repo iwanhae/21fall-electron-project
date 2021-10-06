@@ -20,10 +20,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
+      "@src/*": ["src/*"],
       "@routes/*": ["src/routes/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@library/*": ["src/library/*"]
+      "@library/*": ["src/library/*"],
+      "@theme/*": ["src/theme/*"]
     }
   },
   "exclude": [

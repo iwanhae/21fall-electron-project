@@ -13,10 +13,12 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     symlinks: false,
     alias: {
+      '@src': path.resolve(__dirname, './src'),
       '@routes': path.resolve(__dirname, './src/routes'),
       '@components': path.resolve(__dirname, './src/components'),
       '@library': path.resolve(__dirname, './src/library'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@theme': path.resolve(__dirname, './src/theme'),
       'react-dom': '@hot-loader/react-dom',
     },
   },
