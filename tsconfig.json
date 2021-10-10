@@ -23,6 +23,7 @@
       "@src/*": ["src/*"],
       "@routes/*": ["src/routes/*"],
       "@components/*": ["src/components/*"],
+      "@icons/*": ["src/components/icons/*"],
       "@hooks/*": ["src/hooks/*"],
       "@library/*": ["src/library/*"],
       "@theme/*": ["src/theme/*"]
