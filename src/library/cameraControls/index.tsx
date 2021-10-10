@@ -19,21 +19,11 @@ const CameraControls = ({ target }: CameraControlsProps): JSX.Element => {
     gl: { domElement },
   } = useThree<RootState>();
 
-  // set position of target
-  const targetClone = target.clone();
-  targetClone.add(new THREE.Vector3(0, 0.5, 0));
-
   // this hook will excute on every rendered frame
   useFrame(() => controls.current.update());
 
   return (
-    <OrbitControls
-      ref={controls}
-      args={[camera, domElement]}
-      enablePan={false}
-      enableZoom={true}
-      target={targetClone}
-    />
+    <OrbitControls ref={controls} args={[camera, domElement]} enablePan={false} enableZoom={true} target={target} />
   );
 };
 

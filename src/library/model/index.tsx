@@ -34,7 +34,7 @@ const Model = forwardRef<THREE.Group, ModelProps>(({ index, position }, ref) => 
 
   return (
     <group ref={ref} dispose={null} position={position}>
-      <group scale={0.015}>
+      <group scale={0.02}>
         <primitive object={nodes.mixamorigHips} />
         <skinnedMesh
           castShadow
