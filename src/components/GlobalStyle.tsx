@@ -159,6 +159,7 @@ const globalStyle = css`
 
   a,
   button {
+    border: none;
     outline: none;
     background-color: transparent;
     &:hover {

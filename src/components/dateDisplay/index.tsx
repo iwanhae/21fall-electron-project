@@ -25,8 +25,6 @@ const StyledWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background-color: ${({ theme }) => theme.color.topHeader};
-  border-bottom: 1px solid ${({ theme }) => theme.color.border};
 `;
 
 const Title = styled.h2`

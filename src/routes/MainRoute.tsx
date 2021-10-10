@@ -1,28 +1,18 @@
 import React from 'react';
-import styled from '@theme/styled';
 import DateDisplay from '@components/dateDisplay';
+import styled from '@theme/styled';
 
 const MainRoute = (): JSX.Element => {
   return (
-    <StyledLayout>
+    <>
       <DateDisplay />
-      <StyledInnerContents>
-        <>1</>
-      </StyledInnerContents>
+      <StyledInnerContents />
       <StyledBottomHeader>
-        <div>Quit</div>
         <StyledButton>StartNow</StyledButton>
       </StyledBottomHeader>
-    </StyledLayout>
+    </>
   );
 };
-
-const StyledLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-`;
 
 const StyledInnerContents = styled.section`
   display: flex;
@@ -44,7 +34,7 @@ const StyledButton = styled.button`
 const StyledBottomHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   background-color: ${({ theme }) => theme.color.subHeader};
   padding: 8px 12px;
 `;
