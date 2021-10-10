@@ -22,7 +22,7 @@ const CameraRoute = (): JSX.Element => {
 
   return (
     <>
-      <StyledContainer>
+      <StyledLayout>
         <Typography size={20} padding={20}>
           {EXERCISE}
         </Typography>
@@ -48,7 +48,7 @@ const CameraRoute = (): JSX.Element => {
         </CircleContainer>
         <TempContainer left={100}>디버깅용 스켈레톤</TempContainer>
         <TempContainer right={100}>모범자세</TempContainer>
-      </StyledContainer>
+      </StyledLayout>
     </>
   );
 };
@@ -86,7 +86,7 @@ const CircleContainer = styled.div`
   width: 50%;
 `;
 
-const StyledContainer = styled.div`
+const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
