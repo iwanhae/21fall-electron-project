@@ -1,10 +1,9 @@
+import { Pose } from '@mediapipe/pose';
 import * as THREE from 'three';
+import { BONES } from '@library/avatar/types';
 
 // ========================== [ manage model ] ========================================
 const PREFIX = 'mixamorig';
-interface BONES {
-  [boneName: string]: number[];
-}
 
 /*
 	-1번: 기본(십자가)
@@ -31,7 +30,7 @@ const POSE: BONES[] = [
 const getRotationFromDegree = (degree: number[]): THREE.Vector3 =>
   new THREE.Vector3().fromArray(degree.map((d) => THREE.MathUtils.degToRad(d)));
 
-export const setPose = (idx: number, bones: THREE.Bone[]): void => {
+const setPose = (idx: number, bones: THREE.Bone[]): void => {
   // set pose to default
   if (idx === -1) {
     bones.forEach((joint) => {
@@ -42,6 +41,11 @@ export const setPose = (idx: number, bones: THREE.Bone[]): void => {
   }
 
   const pose = POSE[idx];
+
+  setCustomPose(pose, bones);
+};
+
+const setCustomPose = (pose: BONES, bones: THREE.Bone[]): void => {
   // name of bones declared in pose
   const names = Object.keys(pose);
 
@@ -53,4 +57,9 @@ export const setPose = (idx: number, bones: THREE.Bone[]): void => {
     // and set rotation of joint by degree
     joint.rotation.setFromVector3(getRotationFromDegree(degree));
   });
+};
+
+export default {
+  setPose,
+  setCustomPose,
 };

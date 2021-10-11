@@ -15,7 +15,7 @@ interface Props {
  * @param param0 Props
  * @returns JSX
  */
-const PrimaryCanvas = ({ width, height }: Props): JSX.Element => {
+const DebugCanvas = ({ width, height }: Props): JSX.Element => {
   let video: HTMLVideoElement;
   let canvas: HTMLCanvasElement;
 
@@ -34,15 +34,14 @@ const PrimaryCanvas = ({ width, height }: Props): JSX.Element => {
 
       // cam -> pose
       cam.addHook(async (img) => {
+        ctx.drawImage(img, 0, 0, 300, 300);
         await pose.catchImage(img);
       });
 
       // pose -> draw canvas
       pose.addHook(async (p) => {
-        ctx.drawImage(p.image, 0, 0);
-        ctx.drawImage(p.segmentationMask, 0, 0);
-        p.poseLandmarks.forEach((ptr, i) => {
-          ctx.fillText(`${i}`, ptr.x * 640, ptr.y * 480);
+        p.poseLandmarks?.forEach((ptr, i) => {
+          ctx.fillText(`${i}`, ptr.x * 300, ptr.y * 300);
         });
       });
 
@@ -59,4 +58,4 @@ const PrimaryCanvas = ({ width, height }: Props): JSX.Element => {
   );
 };
 
-export default PrimaryCanvas;
+export default DebugCanvas;

@@ -1,10 +1,12 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import ThreeCanvas from '@library/threeCanvas';
 import Scene from '@library/scene';
 import Model from '@library/model';
 import Circle from '@src/components/circle';
 import { Vector3 } from 'three';
 import styled from 'styled-components';
+import DebugCanvas from '@components/debug';
+import avatar, { BONES } from '@src/library/avatar';
 
 const TARGET: Vector3 = new Vector3(0, 1.8, 0);
 const MODEL_POSITION = new Vector3(0, 0, 0);
@@ -13,12 +15,30 @@ const EXERCISE = '스쿼트';
 const quota = 3;
 const DESCRIPTION = '발을 어깨너비로 벌린 후, 앉았다 일어나세요';
 
+const DefaultPose: BONES = {
+  LeftShoulder: [0, 0, 0],
+  RightShoulder: [0, 0, -70],
+  LeftArm: [180, 0, 0],
+  RightArm: [180, 0, 0],
+  LeftForeArm: [0, 0, -40],
+  RightForeArm: [0, 0, 40],
+  LeftUpLeg: [0, 0, 20],
+  RightUpLeg: [0, 0, -20],
+};
+
 const CameraRoute = (): JSX.Element => {
+  const [currentPose, setCurrentPose] = useState<BONES>(DefaultPose);
   const [count, setCount] = useState<number>(0);
 
   const increment = () => {
     setCount((count + 1) % (quota + 1));
   };
+
+  setInterval(() => {
+    currentPose.LeftShoulder[0] += 10;
+    setCurrentPose(currentPose);
+    console.log('HEllo', currentPose.LeftShoulder[0]);
+  }, 30);
 
   return (
     <>
@@ -33,7 +53,7 @@ const CameraRoute = (): JSX.Element => {
           <ThreeCanvas>
             <Scene target={TARGET}>
               <Suspense fallback={null}>
-                <Model index={-1} position={MODEL_POSITION} />
+                <Model pose={currentPose} position={MODEL_POSITION} />
               </Suspense>
             </Scene>
           </ThreeCanvas>
@@ -46,7 +66,9 @@ const CameraRoute = (): JSX.Element => {
             <Circle key={i.toString()} active={false} />
           ))}
         </CircleContainer>
-        <TempContainer left={100}>디버깅용 스켈레톤</TempContainer>
+        <TempContainer left={100}>
+          <DebugCanvas width={300} height={300} />
+        </TempContainer>
         <TempContainer right={100}>모범자세</TempContainer>
       </StyledLayout>
     </>
